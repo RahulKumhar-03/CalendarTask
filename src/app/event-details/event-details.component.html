@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Event Details</h2>
+<mat-dialog-content>
+    <div class="details-container">
+        <h1>Event Name: {{data.eventName}}</h1>
+        <h3>Description: {{data.desc}}</h3>
+        <h3>Date: {{data.date}}</h3>
+        <h3>Type: {{data.eventType}}</h3>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onClose()" class="button">
+        Close
+    </button>
+</mat-dialog-actions>

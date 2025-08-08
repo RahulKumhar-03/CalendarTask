@@ -1,0 +1,46 @@
+<div style="padding: 50px;">
+    <div id="cal-header" style="display: flex; justify-content: space-evenly; width: 100%;">
+        <div style="padding-top: 15px;">
+            <button mat-stroked-button color="primary" (click)="openEventForm()">Add Event</button>
+        </div>
+        <div style="gap: 20px; display: flex;padding-top: 15px;">
+            <mat-icon (click)="previousMonth()">arrow_back_ios</mat-icon>
+            <h3 style="font-size: x-large;">{{months[currentMonth]}},{{currentYear}}</h3>
+            <mat-icon (click)="nextMonth()">arrow_forward_ios</mat-icon>
+        </div>
+        <div style="display: flex; gap: 10px; padding: 10px;">
+            <button mat-raised-button (click)="changeCalendarView()">Month</button>
+            <button mat-raised-button (click)="changeCalendarView()">Week</button>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Select View Type</mat-label>
+                    <mat-select (selectionChange)="applyFilters($event.value)" [(ngModel)]="selectedValue">
+                         <mat-option *ngFor="let option of options" [value]="option.value">
+                            {{ option.label }} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        </div>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(7,1fr); justify-items: center; padding: 1rem;">
+        <div *ngFor="let day of filteredDays">
+            <h3>{{day}}</h3>
+        </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(7,1fr); grid-template-rows: repeat(6,1fr);"> 
+        <mat-card 
+            *ngFor="let date of monthDates" 
+            class="date-card" 
+            [ngClass]="{
+                'current-month':date.getMonth() === currentMonth,
+                'current-date':date.toDateString() === currentDate.toDateString(),
+            }"
+        >
+            <h3 class="card-date" [ngClass]="{'current-date':date.toDateString() === currentDate.toDateString()}">{{date.getDate()}}</h3>
+            <div *ngFor="let event of events;" style="padding: 0px 10px;">
+                <div *ngIf="event.date === date.toDateString()" class="event-header" (click)="openForEventDetail(event)">{{event.eventName}}</div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+

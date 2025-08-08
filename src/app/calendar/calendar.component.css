@@ -1,0 +1,23 @@
+.date-card{
+    height: 150px; 
+    margin: 5px; 
+    padding: 5px; 
+}
+.event-header{
+    background-color: antiquewhite; 
+    text-align: center; 
+    border-radius: 15px; 
+    margin-top: 1px;
+    cursor: pointer;
+}
+.card-date{
+    text-align: end;
+    font-size: large;
+}
+.current-month{
+    background-color: lightgrey;
+}
+.current-date{
+    background-color: #9FA8DA;
+}
+

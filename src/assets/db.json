@@ -1,0 +1,17 @@
+{
+    "events": [
+        { "eventName": "English New Year", "eventType": "Religional Festival", "desc": "First day of Gregorian calendar", "date": "Wed Jan 01 2025" },
+        { "eventName": "Friendship Day", "eventType": "Good to know", "desc": "1st Sunday of August", "date": "Sun Aug 03 2025" },
+        { "eventName": "Raksha Bandan", "eventType": "Festival", "desc": "Shravana, Shukla Purnima", "date": "Sat Aug 09 2025" },
+        { "eventName": "Independence Day", "eventType": "Government Holiday", "desc": "Fixed day in Gregorian calendar", "date": "Fri Aug 15 2025" },
+        { "eventName": "Independence Day", "eventType": "Government Holiday", "desc": "Fixed day in Gregorian calendar", "date": "Fri Aug 15 2025" },
+        { "eventName": "Janmashtami", "eventType": "Festival", "desc": "Lord Krishna Birth", "date": "Sat Aug 16 2025" },
+        { "eventName": "Ganesh Chaturthi", "eventType": "Festival", "desc": "Bhadrapada, Shukla Chaturthi", "date": "Wed Aug 27 2025" },
+        { "eventName": "Teachers' Day", "eventType": "Good to know", "desc": "Fixed day in Gregorian calendar", "date": "Fri Sep 05 2025" },
+        { "eventName": "Hindi Diwas", "eventType": "Good to know", "desc": "Fixed day of Gregorian calendar", "date": "Sun Sep 14 2025" },
+        { "eventName": "Engineer's Day", "eventType": "Good to know", "desc": "Fixed day in Gregorian calendar", "date": "Mon Sep 15 2025" },
+        { "eventName": "Muharram", "eventType": "Religional Festival", "desc": "Based on Islamic Calendar", "date": "Sun Jul 06 2025" },
+        { "eventName": "Guru Purnima", "eventType": "Festival", "desc": "Ashadha, Shukla Purnima", "date": "Thu Jul 10 2025" },
+        { "eventName": "Tulsidas Jayanti", "eventType": "Religional Festival", "desc": "Shravana, Shukla Saptami", "date": "Thu Jul 31 2025" }
+    ]
+}
