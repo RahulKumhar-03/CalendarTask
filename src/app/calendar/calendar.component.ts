@@ -26,7 +26,7 @@ export class CalendarComponent implements OnInit {
     {value:'option2',label:'Work Week'}
   ]
   calendarView: 'Month' | 'Week' = 'Month';
-  weekStartDate :Date = new Date()
+  weekStartDate:Date = new Date();
   
   constructor(private eventService: EventsService, public dialog: MatDialog, private fb: FormBuilder){}
 
@@ -80,12 +80,15 @@ export class CalendarComponent implements OnInit {
 
   generateWeekDates(){
     const weekDates = []
-  
+    const startdate = new Date( this.currentYear, this.currentMonth,this.weekStartDate.getDate() - this.weekStartDate.getDay())
     for(let i=0; i<=6; i++){
       const start = new Date(this.weekStartDate);
-     // start.setDate(this.weekStartDate + i)
+      start.setDate(startdate.getDate() + i)
       weekDates.push(start)      
     }
+    this.weekStartDate = new Date(this.currentYear,this.currentMonth,startdate.getDate())
+    console.log(startdate.toDateString());
+    
     this.monthDates = weekDates
   }
   previousMonth(){
@@ -96,6 +99,23 @@ export class CalendarComponent implements OnInit {
   nextMonth(){
     this.currentMonth = this.currentMonth + 1;
     this.generateMonthDates();
+  }
+
+  previousWeek(){
+    this.weekStartDate.setDate(this.weekStartDate.getDate() - 7)
+    this.generateWeekDates();
+  }
+
+  nextWeek(){
+    this.weekStartDate.setDate(this.weekStartDate.getDate() + 7)
+    this.generateWeekDates();
+  }
+  toggleWeek(date: Date){
+    if(this.calendarView === 'Month'){
+      this.calendarView = 'Week'
+      this.weekStartDate = date
+      this.generateWeekDates()
+    }
   }
 
   openEventForm(){
@@ -119,8 +139,7 @@ export class CalendarComponent implements OnInit {
     else {
       this.calendarView = 'Month'
       this.generateMonthDates();
-    }
-    
+    } 
   }
 }
 export interface Option{

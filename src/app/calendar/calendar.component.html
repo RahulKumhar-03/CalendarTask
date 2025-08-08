@@ -3,14 +3,23 @@
         <div style="padding-top: 15px;">
             <button mat-stroked-button color="primary" (click)="openEventForm()">Add Event</button>
         </div>
-        <div style="gap: 20px; display: flex;padding-top: 15px;">
-            <mat-icon (click)="previousMonth()">arrow_back_ios</mat-icon>
-            <h3 style="font-size: x-large;">{{months[currentMonth]}},{{currentYear}}</h3>
-            <mat-icon (click)="nextMonth()">arrow_forward_ios</mat-icon>
+        <div *ngIf="calendarView === 'Month'">
+            <div style="gap: 20px; display: flex;padding-top: 15px; cursor: pointer;">
+                <mat-icon (click)="previousMonth()">arrow_back_ios</mat-icon>
+                <h3 style="font-size: x-large;">{{months[currentMonth]}},{{currentYear}}</h3>
+                <mat-icon (click)="nextMonth()">arrow_forward_ios</mat-icon>
+            </div>
+        </div>
+        <div *ngIf="calendarView === 'Week'">
+            <div style="gap: 20px; display: flex;padding-top: 15px; cursor: pointer;">
+                <mat-icon (click)="previousWeek()">arrow_back_ios</mat-icon>
+                <h3 style="font-size: x-large;">{{weekStartDate.toDateString()}}</h3>
+                <mat-icon (click)="nextWeek()">arrow_forward_ios</mat-icon>
+            </div>
         </div>
         <div style="display: flex; gap: 10px; padding: 10px;">
-            <button mat-raised-button (click)="changeCalendarView()">Month</button>
-            <button mat-raised-button (click)="changeCalendarView()">Week</button>
+            <button mat-raised-button (click)="changeCalendarView()" [disabled]="calendarView === 'Month'">Month</button>
+            <button mat-raised-button (click)="changeCalendarView()" [disabled]="calendarView === 'Week'">Week</button>
         </div>
         <div>
             <mat-form-field>
@@ -35,6 +44,7 @@
                 'current-month':date.getMonth() === currentMonth,
                 'current-date':date.toDateString() === currentDate.toDateString(),
             }"
+            (click)="toggleWeek(date)" 
         >
             <h3 class="card-date" [ngClass]="{'current-date':date.toDateString() === currentDate.toDateString()}">{{date.getDate()}}</h3>
             <div *ngFor="let event of events;" style="padding: 0px 10px;">
